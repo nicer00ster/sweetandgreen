@@ -1,28 +1,45 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Header, ListItem } from 'react-native-elements';
+import { Header, ListItem, Icon } from 'react-native-elements';
+import { Spinner } from 'react-native-spinkit';
 
 export default class Home extends React.Component {
+  static navigationOptions = {
+    drawerLabel: 'Home',
+    drawerIcon: ({ tintColor }) => <Icon name="home" />
+  }
+  state = {
+    loading: false
+  }
+  compponentDidMount() {
+    this.setState({ loading: true })
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Header
-          backgroundColor={'transparent'}
-          outerContainerStyles={{ borderBottomWidth: 0 }}
-          leftComponent={{ icon: 'menu', color: '#78e08f' }}
-          // centerComponent={{ text: 'SUPERGREEN', style: { color: '#f7797d' } }}
-          rightComponent={{ icon: 'home', color: '#78e08f' }}
-        />
         <Image
           source={require('../greens.jpg')}
           style={styles.background}
           resizeMode="cover"
           opacity={.5}
         />
+        <Header
+          backgroundColor={'transparent'}
+          outerContainerStyles={{ borderBottomWidth: 0 }}
+          leftComponent={{ icon: 'menu', color: '#78e08f', onPress: () => this.props.navigation.openDrawer() }}
+          rightComponent={{ icon: 'home', color: '#78e08f' }}
+        />
         <View style={styles.content}>
           <Text style={{ padding: 25 }}>Explore our menu to get started!</Text>
-          <ListItem leftIcon={{ name: 'redo', color: '#78e08f' }} style={{ backgroundColor: '#fefefe' }} title="Login to get started!" />
-          <ListItem leftIcon={{ name: 'restaurant-menu', color: '#78e08f' }} title="Check out the menu!" />
+          <ListItem
+            leftIcon={{ name: 'redo', color: '#78e08f' }}
+            style={{ backgroundColor: '#fefefe' }}
+            title="Login to get started!"
+          />
+          <ListItem
+            leftIcon={{ name: 'restaurant-menu', color: '#78e08f' }}
+            title="Check out the menu!"
+          />
         </View>
         <Header
           backgroundColor={'#c6ffdd'}
