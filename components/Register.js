@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import { Card, Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
+import { Card, Button, FormLabel, FormInput, FormValidationMessage, Icon } from 'react-native-elements';
 
 export default ({ navigation }) => (
     <View style={styles.container}>
