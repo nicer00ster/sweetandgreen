@@ -8,7 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
-import AuthFlow from './components/AuthFlow';
+import AuthRouter from './components/AuthRouter';
 
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
@@ -16,14 +16,14 @@ const headerStyle = {
 
 export const notAuthed = createSwitchNavigator({
   Login: {
-    screen: AuthFlow,
+    screen: AuthRouter,
     navigationOptions: {
       title: 'Login',
       headerStyle
     }
   },
   Register: {
-    screen: AuthFlow,
+    screen: AuthRouter,
     navigationOptions: {
       title: 'Register',
       headerStyle

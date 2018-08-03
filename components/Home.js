@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Header, ListItem, Icon } from 'react-native-elements';
-import { Spinner } from 'react-native-spinkit';
 
 export default class Home extends React.Component {
   static navigationOptions = {
@@ -15,6 +14,7 @@ export default class Home extends React.Component {
     this.setState({ loading: true })
   }
   render() {
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Image
@@ -26,8 +26,10 @@ export default class Home extends React.Component {
         <Header
           backgroundColor={'transparent'}
           outerContainerStyles={{ borderBottomWidth: 0 }}
-          leftComponent={{ icon: 'menu', color: '#78e08f', onPress: () => this.props.navigation.openDrawer() }}
-          rightComponent={{ icon: 'home', color: '#78e08f' }}
+          innerContainerStyles={{ margin: 5 }}
+          leftComponent={{ icon: 'menu', color: '#10ac84', size: 36, onPress: () => navigation.openDrawer() }}
+          // rightComponent={{ icon: 'home', color: '#10ac84', size: 36 }}
+          rightComponent={<Text style={{ color: '#10ac84', fontSize: 24 }}>{navigation.state.routeName}</Text>}
         />
         <View style={styles.content}>
           <Text style={{ padding: 25 }}>Explore our menu to get started!</Text>
