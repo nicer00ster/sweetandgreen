@@ -8,7 +8,7 @@ import Login from './Login';
 import Register from './Register';
 
 const transitionConfig = {
-  duration: 1000,
+  duration: 250,
   timing: Animated.timing,
   easing: Easing.easing,
   gesturesEnabled: true

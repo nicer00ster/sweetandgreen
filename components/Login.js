@@ -7,12 +7,13 @@ import { Transition } from 'react-navigation-fluid-transitions';
 const Circle = (props) => (
   <View style={{
     backgroundColor: props.background,
-    width: props.size,
+    width: 100,
     height: props.size,
-    borderRadius: props.size / 2,
+    borderTopLeftRadius: props.size / 2,
+    borderTopRightRadius: props.size / 2,
     margin: 14,
-    paddingTop: 20 }}
-  />
+    paddingTop: 8 }}
+  ><Text style={{textAlign: 'center', color: '#10ac84', fontWeight: '200'}}>{props.routeName}</Text></View>
 );
 
 export default ({ navigation }) => (
@@ -24,18 +25,17 @@ export default ({ navigation }) => (
         opacity={.5}
       />
       <View style={styles.container}>
-        <View style={styles.circle}></View>
-        <View style={styles.circlesContainer}>
+        <Transition appear="horizontal" delay>
+          <Circle routeName={navigation.state.routeName.toUpperCase()} style={{ position: 'absolute', top: 0, alignSelf: 'flex-start', padding: 84 }} background="#fff" size={40} />
+        </Transition>
+        {/* <View style={styles.circlesContainer}>
           <Transition appear="horizontal" delay>
             <Circle background="#10ac84" size={40} />
           </Transition>
           <Transition appear="horizontal" delay>
             <Circle background="#10ac84" size={40} />
           </Transition>
-          <Transition appear="horizontal" delay>
-            <Circle background="#10ac84" size={40} />
-          </Transition>
-        </View>
+        </View> */}
         <Card containerStyle={{ width: '75%', alignSelf: 'center', borderRadius: 3 }} style={styles.card} elevation={7}>
           <Text style={styles.header}>Sweet & Green</Text>
           <Divider />
@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
   circlesContainer: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'row',
   },
   circle: {

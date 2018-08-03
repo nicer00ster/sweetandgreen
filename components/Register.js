@@ -1,6 +1,19 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Card, Button, FormLabel, FormInput, FormValidationMessage, Icon } from 'react-native-elements';
+import { Transition } from 'react-navigation-fluid-transitions';
+
+const Circle = (props) => (
+  <View style={{
+    backgroundColor: props.background,
+    width: 100,
+    height: props.size,
+    borderTopLeftRadius: props.size / 2,
+    borderTopRightRadius: props.size / 2,
+    margin: 14,
+    paddingTop: 8 }}
+  ><Text style={{textAlign: 'center', color: '#10ac84', fontWeight: '200'}}>{props.routeName}</Text></View>
+);
 
 export default ({ navigation }) => (
   <React.Fragment>
@@ -11,6 +24,9 @@ export default ({ navigation }) => (
       opacity={.5}
     />
     <View style={styles.container}>
+      <Transition appear="right" delay>
+        <Circle routeName={navigation.state.routeName.toUpperCase()} style={{ position: 'absolute', top: 0, alignSelf: 'flex-end', padding: 66 }} background="#fff" size={40} />
+      </Transition>
       <Card containerStyle={{ width: '75%', alignSelf: 'center', borderRadius: 3 }} style={styles.card} elevation={7}>
         <FormLabel>Email</FormLabel>
         <FormInput/>
