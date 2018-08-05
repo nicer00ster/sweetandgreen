@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { Header, ListItem, Icon } from 'react-native-elements';
-import LinearGradient from 'react-native-linear-gradient';
 
 export default class Home extends React.Component {
   static navigationOptions = {
@@ -31,38 +30,34 @@ export default class Home extends React.Component {
             innerContainerStyles={{ margin: 5 }}
             leftComponent={{ icon: 'menu', color: '#10ac84', size: 36, onPress: () => navigation.openDrawer() }}
             // rightComponent={{ icon: 'home', color: '#10ac84', size: 36 }}
-            rightComponent={<Text style={{ color: '#10ac84', fontSize: 24 }}>{navigation.state.routeName}</Text>}
+            // rightComponent={<Text style={{ color: '#10ac84', fontSize: 24 }}>{navigation.state.routeName}</Text>}
           />
           <Text style={{ padding: 25, fontWeight: '800', fontSize: 36 }}>Good afternoon, Alex.</Text>
           <View style={styles.content}>
+            <Text style={{ margin: 10, fontSize: 16 }}>Tap "Order Now" to get started!</Text>
             <ListItem
-              scaleProps={{
-                friction: 90,
-                tension: 100,
-                activeScale: 0.95,
-              }}
-              linearGradientProps={{
-                colors: ['#10ac84', '#fefefe'],
-                start: [1, 0],
-                end: [0.2, 0],
-              }}
-              ViewComponent={LinearGradient}
-              leftIcon={{ name: 'redo', color: '#78e08f' }}
+              leftIcon={{ name: 'loyalty', color: '#10ac84' }}
               containerStyle={styles.listItem}
-              title="Login to get started!"
+              title="CREDITS & REWARDS"
             />
             <ListItem
-              leftIcon={{ name: 'restaurant-menu', color: '#78e08f' }}
+              leftIcon={{ name: 'favorite', color: '#10ac84' }}
               containerStyle={styles.listItem}
-              title="Check out the menu!"
+              title="MY ORDERS & FAVORITES"
+            />
+            <ListItem
+              leftIcon={{ name: 'credit-card', color: '#10ac84' }}
+              containerStyle={styles.listItem}
+              title="SCAN TO PAY"
+            />
+            <ListItem
+              containerStyle={styles.listItemOrder}
+              subtitleStyle={{ color: '#fff' }}
+              titleStyle={{ color: '#fff' }}
+              title="Order Now"
+              subtitle="Find a Sweet & Green"
             />
           </View>
-          <Header
-            backgroundColor={'#c6ffdd'}
-            outerContainerStyles={{ borderBottomWidth: 0, height: 140 }}
-            innerContainerStyles={{ alignItems: 'center' }}
-            centerComponent={{ text: 'SUPERGREEN', style: { color: '#f7797d' } }}
-          />
         </View>
       </React.Fragment>
     );
@@ -87,6 +82,13 @@ const styles = StyleSheet.create({
   listItem: {
     justifyContent: 'center',
     backgroundColor: '#fefefe',
+    borderTopWidth: .5,
+    borderColor: '#999',
+    height: 75
+  },
+  listItemOrder: {
+    justifyContent: 'center',
+    backgroundColor: '#10ac84',
     borderTopWidth: .5,
     borderColor: '#999',
     height: 75
