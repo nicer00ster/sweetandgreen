@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Image } from 'react-native';
 import { Header, ListItem, Icon } from 'react-native-elements';
 
 export default class Home extends React.Component {
-  static navigationOptions = {
-    drawerLabel: 'Home',
-    drawerIcon: ({ tintColor }) => <Icon name="home" />
-  }
+  // static navigationOptions = {
+  //   drawerLabel: 'Home',
+  //   drawerIcon: ({ tintColor }) => <Icon name="home" />
+  // }
   state = {
     loading: false
   }
@@ -28,9 +28,7 @@ export default class Home extends React.Component {
             backgroundColor={'transparent'}
             outerContainerStyles={{ borderBottomWidth: 0 }}
             innerContainerStyles={{ margin: 5 }}
-            leftComponent={{ icon: 'menu', color: '#10ac84', size: 36, onPress: () => navigation.openDrawer() }}
-            // rightComponent={{ icon: 'home', color: '#10ac84', size: 36 }}
-            // rightComponent={<Text style={{ color: '#10ac84', fontSize: 24 }}>{navigation.state.routeName}</Text>}
+            rightComponent={{ icon: 'menu', color: '#10ac84', size: 36, onPress: () => navigation.openDrawer() }}
           />
           <Text style={{ padding: 25, fontWeight: '800', fontSize: 36 }}>Good afternoon, Alex.</Text>
           <View style={styles.content}>

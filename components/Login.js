@@ -28,15 +28,7 @@ export default ({ navigation }) => (
         <Transition appear="horizontal" delay>
           <Circle routeName={navigation.state.routeName.toUpperCase()} style={{ position: 'absolute', top: 0, alignSelf: 'flex-start', padding: 84 }} background="#fff" size={40} />
         </Transition>
-        {/* <View style={styles.circlesContainer}>
-          <Transition appear="horizontal" delay>
-            <Circle background="#10ac84" size={40} />
-          </Transition>
-          <Transition appear="horizontal" delay>
-            <Circle background="#10ac84" size={40} />
-          </Transition>
-        </View> */}
-        <Card containerStyle={{ width: '75%', alignSelf: 'center', borderRadius: 3 }} style={styles.card} elevation={7}>
+        <Card containerStyle={styles.cardContainer} style={styles.card} elevation={7}>
           <Text style={styles.header}>Sweet & Green</Text>
           <Divider />
           <FormLabel>Email</FormLabel>
@@ -105,6 +97,11 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     justifyContent: 'flex-end',
+  },
+  cardContainer: {
+    width: '75%',
+    alignSelf: 'center',
+    borderRadius: 3
   },
   card: {
     shadowColor: '#000000',
