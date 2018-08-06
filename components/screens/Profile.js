@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { Icon, Button, Card, Avatar } from 'react-native-elements';
-import { onLogout } from '../auth';
+import { onLogout } from '../../auth';
 
 class Profile extends React.Component {
   // static navigationOptions = {
@@ -20,14 +20,8 @@ class Profile extends React.Component {
             activeOpacity={0.7}
             title='AB'
             containerStyle={{
-              // backgroundColor: "#bcbec1",
               alignItems: "center",
               justifyContent: "center",
-              // width: 80,
-              // height: 80,
-              // borderRadius: 40,
-              alignSelf: "center",
-              // marginBottom: 20
             }}
           >
             <Text style={{ color: "white", fontSize: 28 }}>AB</Text>

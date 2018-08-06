@@ -1,13 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
-import { createDrawerNavigator, createTabNavigator, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 
 import { isLoggedIn } from './auth';
-
-import Restaurants from './components/Restaurants';
-import Home from './components/Home';
-import Login from './components/Login';
-import Register from './components/Register';
 import { rootNav } from './router';
 
 console.disableYellowBox = true;

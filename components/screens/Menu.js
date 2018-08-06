@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
+import Layout from '../Layout';
 
 class ListScreen extends React.Component {
   constructor(props) {
@@ -39,11 +40,13 @@ class ListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList
-          data={this.state.items}
-          renderItem={this.renderItem}
-          keyExtractor={(_, index) => `${index}`}
-        />
+        <Layout openMenu={() => this.props.navigation.openDrawer()}>
+          <FlatList
+            data={this.state.items}
+            renderItem={this.renderItem}
+            keyExtractor={(_, index) => `${index}`}
+          />
+        </Layout>
       </View>
     );
   }
@@ -152,7 +155,7 @@ class Menu extends React.Component {
   static router = Navigator.router;
   render() {
     return (
-      <Navigator navigation={this.props.navigation} />
+        <Navigator navigation={this.props.navigation} />
     );
   }
 }
