@@ -8,33 +8,37 @@ import {
   FlatList,
   Dimensions,
 } from 'react-native';
+import { connect } from 'react-redux';
+
+import { listMenuItems } from '../../reducers';
 
 import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
 import Layout from '../Layout';
 
 class ListScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: [],
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     items: [],
+  //   };
+  // }
 
   componentWillMount() {
-    const items = [];
-    const imageSize = 80;
-    const numberOfImages = 40;
-    const randMax = 100;
-    for (let i = 0; i < numberOfImages; i++) {
-      let randomNumber = Math.floor((Math.random() * randMax) + 1);
-      const idExists = (e) => e.id === randomNumber;
-      while (items.findIndex(idExists) > -1) {
-        randomNumber = Math.floor((Math.random() * randMax) + 1);
-      }
-
-      items.push({ url: `https://picsum.photos/${imageSize}/${imageSize}?image=${randomNumber}`, id: randomNumber });
-    }
-    this.setState({ ...this.state, items });
+    this.props.listMenuItems(7);
+    // const items = [];
+    // const imageSize = 80;
+    // const numberOfImages = 40;
+    // const randMax = 100;
+    // for (let i = 0; i < numberOfImages; i++) {
+    //   let randomNumber = Math.floor((Math.random() * randMax) + 1);
+    //   const idExists = (e) => e.id === randomNumber;
+    //   while (items.findIndex(idExists) > -1) {
+    //     randomNumber = Math.floor((Math.random() * randMax) + 1);
+    //   }
+    //
+    //   items.push({ url: `https://picsum.photos/${imageSize}/${imageSize}?image=${randomNumber}`, id: randomNumber });
+    // }
+    // this.setState({ ...this.state, items });
   }
 
   render() {
@@ -42,7 +46,8 @@ class ListScreen extends React.Component {
       <View style={styles.container}>
         <Layout openMenu={() => this.props.navigation.openDrawer()}>
           <FlatList
-            data={this.state.items}
+            // data={this.state.items}
+            data={this.props.menuItems}
             renderItem={this.renderItem}
             keyExtractor={(_, index) => `${index}`}
           />
@@ -160,4 +165,11 @@ class Menu extends React.Component {
   }
 }
 
-export default Menu;
+const mapStateToProps = state => {
+  let storedMenuItems = state.menuItems.map(item => ({ key: item.id, ...item }));
+  return { menuItems: storedMenuItems }
+};
+
+const mapDispatchToProps = { listMenuItems };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

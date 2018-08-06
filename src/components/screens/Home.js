@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
   subtitle: {
     padding: 25,
     fontWeight: '200',
-    fontSize: 20,
+    fontFamily: 'sans-serif',
+    fontSize: 14,
     color: '#000'
   },
   background: {
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
     borderTopWidth: .5,
     borderColor: '#999',
     height: 75,
+    padding: 25,
     borderBottomWidth: 0
   },
   listItemOrder: {

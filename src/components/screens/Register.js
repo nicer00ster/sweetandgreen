@@ -7,7 +7,7 @@ import { Label } from '../Label';
 export default ({ navigation }) => (
   <React.Fragment>
     <Image
-      source={require('../../greens.jpg')}
+      source={require('../../../greens.jpg')}
       style={styles.background}
       resizeMode="cover"
       opacity={.5}

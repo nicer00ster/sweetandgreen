@@ -9,7 +9,7 @@ export const DrawerScreen = props => (
        <Image
          style={styles.drawerImage}
          opacity={0.5}
-         source={require('../../drawer.jpg')}
+         source={require('../../../drawer.jpg')}
          resizeMode='cover'
        />
        <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }} forceInset={{ top: 'always', horizontal: 'never' }}>

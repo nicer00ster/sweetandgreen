@@ -7,7 +7,7 @@ export default class Layout extends React.Component {
     return (
       <React.Fragment>
         <Image
-          source={require('../greens.jpg')}
+          source={require('../../greens.jpg')}
           style={styles.background}
           resizeMode="cover"
           opacity={.35}
