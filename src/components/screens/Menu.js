@@ -7,11 +7,10 @@ import {
   TouchableOpacity,
   FlatList,
   Dimensions,
+  Button
 } from 'react-native';
 import { connect } from 'react-redux';
 import { fetchMenu } from '../../actions';
-
-import { listMenuItems } from '../../reducers';
 
 import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
 import Layout from '../Layout';
@@ -31,7 +30,7 @@ class Menu extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    menu: state.menu
+    menu: state.menuReducer.menu
   }
 }
 

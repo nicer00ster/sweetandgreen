@@ -1,25 +1,25 @@
 import React from 'react';
 import { ActivityIndicator } from 'react-native';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { Provider, connect } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
 // import axios from 'axios';
 // import axiosMiddleware from 'redux-axios-middleware';
-
-
+import menuSaga from './sagas';
+import rootReducer from './reducers';
 import { isLoggedIn } from './auth';
 import { rootNav } from './Router';
 
-import configureStore from './store/configureStore';
 console.disableYellowBox = true;
 
-// const client = axios.create({
-//   baseURL: 'https://order.sweetgreen.com',
-//   responseType: 'json'
-// });
+const sagaMiddleware = createSagaMiddleware();
 
-// const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+const store = createStore(rootReducer, composeWithDevTools(
+  applyMiddleware(sagaMiddleware),
+));
 
-const store = configureStore();
+sagaMiddleware.run(menuSaga);
 
 export default class App extends React.Component {
   constructor(props) {

@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import menuReducer from './menuReducer'
+import { combineReducers } from 'redux';
+import menuReducer from './menuReducer';
 
 const rootReducer = combineReducers({
     menuReducer

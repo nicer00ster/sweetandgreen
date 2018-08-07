@@ -18,7 +18,7 @@ export default function menuReducer (state = initialState, action) {
       return {
         ...state,
         isFetching: false,
-        menu: action.payload
+        menu: action.data.products
       }
     case FETCH_MENU_FAILURE:
       return {
