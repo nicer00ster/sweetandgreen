@@ -13,75 +13,20 @@ import OrdersFavorites from './components/screens/OrdersFavorites';
 import CreditsRewards from './components/screens/CreditsRewards';
 import { DrawerScreen } from './components/screens/DrawerScreen';
 
-import PublicRouter from './components/routing/PublicRouter';
-import PrivateRouter from './components/routing/PrivateRouter';
-
 const headerStyle = {
   marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
 };
 
-const PrivateRoutes = {
-  Home: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'Home',
-      drawerLabel: 'HOME',
-      drawerIcon: ({ tintColor }) => <Icon name="home" color={tintColor} />
-    }
-  },
-  OrdersFavorites: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'OrdersFavorites',
-      drawerLabel: 'ORDERS & FAVORITES',
-      drawerIcon: ({ tintColor }) => <Icon name="favorite" color={tintColor} />,
-    }
-  },
-  CreditsRewards: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'CreditsRewards',
-      drawerLabel: 'CREDITS & REWARDS',
-      drawerIcon: ({ tintColor }) => <Icon name="card-giftcard" color={tintColor} />,
-    }
-  },
-  Payment: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'Payment',
-      drawerLabel: 'PAYMENT',
-      drawerIcon: ({ tintColor }) => <Icon name="payment" color={tintColor} />,
-    }
-  },
-  Menu: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'Menu',
-      drawerLabel: 'MENU',
-      drawerIcon: ({ tintColor }) => <Icon name="restaurant-menu" color={tintColor} />
-    }
-  },
-  Profile: {
-    screen: PrivateRouter,
-    navigationOptions: {
-      title: 'Profile',
-      drawerLabel: 'PROFILE',
-      drawerIcon: ({ tintColor }) => <Icon name="sentiment-very-satisfied" color={tintColor} />,
-    }
-  },
-};
-
-
 export const Public = createSwitchNavigator ({
   Login: {
-    screen: PublicRouter,
+    screen: Login,
     navigationOptions: {
       title: 'Login',
       headerStyle
     }
   },
   Register: {
-    screen: PublicRouter,
+    screen: Register,
     navigationOptions: {
       title: 'Register',
       headerStyle
@@ -90,7 +35,48 @@ export const Public = createSwitchNavigator ({
 });
 
 export const Private = createDrawerNavigator({
-  ...PrivateRoutes
+  Home: {
+    screen: Home,
+    navigationOptions: {
+      drawerLabel: 'HOME',
+      drawerIcon: ({ tintColor }) => <Icon name="home" color={tintColor} />
+    }
+  },
+  OrdersFavorites: {
+    screen: OrdersFavorites,
+    navigationOptions: {
+      drawerLabel: 'ORDERS & FAVORITES',
+      drawerIcon: ({ tintColor }) => <Icon name="favorite" color={tintColor} />,
+    }
+  },
+  CreditsRewards: {
+    screen: CreditsRewards,
+    navigationOptions: {
+      drawerLabel: 'CREDITS & REWARDS',
+      drawerIcon: ({ tintColor }) => <Icon name="card-giftcard" color={tintColor} />,
+    }
+  },
+  Payment: {
+    screen: Payment,
+    navigationOptions: {
+      drawerLabel: 'PAYMENT',
+      drawerIcon: ({ tintColor }) => <Icon name="payment" color={tintColor} />,
+    }
+  },
+  Menu: {
+    screen: Menu,
+    navigationOptions: {
+      drawerLabel: 'MENU',
+      drawerIcon: ({ tintColor }) => <Icon name="restaurant-menu" color={tintColor} />
+    }
+  },
+  Profile: {
+    screen: Profile,
+    navigationOptions: {
+      drawerLabel: 'PROFILE',
+      drawerIcon: ({ tintColor }) => <Icon name="sentiment-very-satisfied" color={tintColor} />,
+    }
+  },
 }, {
   contentComponent: DrawerScreen,
   contentOptions: {

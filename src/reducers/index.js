@@ -1,6 +1,6 @@
 export const GET_MENU = 'GET_MENU';
-export const GET_MENU_SUCCESS = 'LOAD_SUCCESS';
-export const GET_MENU_FAILURE = 'LOAD_FAILURE';
+export const GET_MENU_SUCCESS = 'GET_MENU_SUCCESS';
+export const GET_MENU_FAIL = 'GET_MENU_FAIL';
 
 export default function reducer(state = { menuItems: [] }, action) {
   switch(action.type) {
@@ -8,7 +8,7 @@ export default function reducer(state = { menuItems: [] }, action) {
       return { ...state, loading: true };
     case GET_MENU_SUCCESS:
       return { ...state, loading: false, menuItems: action.payload.data };
-    case GET_MENU_FAILURE:
+    case GET_MENU_FAIL:
       return {
         ...state, loading: false, error: 'Error: Server failed to respond with request.'
       };

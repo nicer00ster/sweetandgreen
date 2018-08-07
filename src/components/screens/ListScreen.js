@@ -14,33 +14,36 @@ import { listMenuItems } from '../../reducers';
 
 import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
 import Layout from '../Layout';
-import ListScreen from './ListScreen';
 
 
-class DetailsScreen extends React.Component {
+class ListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Transition shared={`image${this.props.navigation.state.params.index}`}>
-          <Image
-            style={styles.largeImage}
-            source={{ uri: this.props.navigation.state.params.item.url }}
+        <Layout openMenu={() => this.props.navigation.openDrawer()}>
+          <FlatList
+            data={this.props.menuItems}
+            renderItem={this.renderItem}
+            keyExtractor={(_, index) => `${index}`}
           />
-        </Transition>
-        <Transition anchor={`image${this.props.navigation.state.params.index}`}>
-          <View style={styles.bottomContainer}>
-            <View style={styles.textContainer}>
-              <Text style={styles.caption}>Image URI:</Text>
-              <Text>{this.props.navigation.state.params.item.url}</Text>
-            </View>
-            <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.goBack()}>
-              <Text>Back</Text>
-            </TouchableOpacity>
-          </View>
-        </Transition>
+        </Layout>
       </View>
     );
   }
+  renderItem = ({ item, index }) => (
+    <TouchableOpacity
+      style={styles.row}
+      onPress={() => { this.props.navigation.navigate('details', { item, index }); }}
+    >
+      <Transition shared={`image${index}`}>
+        <Image style={styles.image} source={{ uri: item.url }} />
+      </Transition>
+      <View style={styles.textContainer}>
+        <Text style={styles.caption}>Image URI:</Text>
+        <Text>{item.name}</Text>
+      </View>
+    </TouchableOpacity>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -92,34 +95,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const Navigator = FluidNavigator({
-  list: { screen: ListScreen },
-  details: { screen: DetailsScreen },
-}, {
-  navigationOptions: {
-    gesturesEnabled: true,
-  },
-});
-
-class Menu extends React.Component {
-  static router = Navigator.router;
-  async componentWillMount() {
-    const res = this.props.listMenuItems(7);
-    const data = await res.json();
-  }
-  render() {
-    return (
-        <Navigator navigation={this.props.navigation} />
-    );
-  }
-}
-
 const mapStateToProps = state => {
-  // let storedMenuItems = state.menuItems.map(item => ({ key: item.id, ...item }));
   let products = state.menuItems.products;
   return { menuItems: products }
 };
 
-const mapDispatchToProps = { listMenuItems };
-
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, null)(ListScreen);

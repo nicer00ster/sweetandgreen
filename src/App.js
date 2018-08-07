@@ -19,8 +19,6 @@ const client = axios.create({
 
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
 
-
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -37,17 +35,17 @@ export default class App extends React.Component {
     isLoggedIn()
     .then(res => this.setState({ authed: res, authCheck: true}))
   }
-  renderApp() {
-    if(this.state.loading) {
-      return <ActivityIndicator size='large' style={{ flex: 1 }} />
-    } else {
-      return <Root />
-    }
-  }
+  // renderApp() {
+  //   if(this.state.loading) {
+  //     return <ActivityIndicator size='large' style={{ flex: 1 }} />
+  //   } else {
+  //     return <Root />
+  //   }
+  // }
   render() {
     const { authed, authCheck } = this.state;
-    if(!authCheck) return null;
     const Root = rootNav(authed)
+    if(!authCheck) return null;
     return (
       <Provider store={store}>
           <Root />

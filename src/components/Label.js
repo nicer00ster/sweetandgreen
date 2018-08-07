@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 
 export const Label = props => (
   <View
-    onPress={props.onPress}
     style={{
       backgroundColor: props.background,
       width: 100,
@@ -13,7 +12,7 @@ export const Label = props => (
       margin: 14,
       paddingTop: 8 }}
     >
-    <Text style={{textAlign: 'center', color: '#10ac84', fontWeight: '200'}}>
+    <Text onPress={props.onPress} style={{textAlign: 'center', color: '#10ac84', fontWeight: '200'}}>
       {props.routeName}
     </Text>
   </View>

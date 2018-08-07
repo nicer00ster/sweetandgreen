@@ -15,17 +15,17 @@ export const DrawerScreen = props => (
        <SafeAreaView style={{ flex: 1, backgroundColor: 'transparent' }} forceInset={{ top: 'always', horizontal: 'never' }}>
          <Text style={styles.header}>Sweet & Green</Text>
          <Avatar
-           medium
+           overlayContainerStyle={{ backgroundColor: '#10ac84' }}
+           small
            rounded
            onPress={() => alert('You touched me!')}
-           activeOpacity={0.7}
+           activeOpacity={0.5}
            title='AB'
-           containerStyle={{
-             alignSelf: "flex-start",
-             margin: 10,
-             padding: 10
-           }}
+           containerStyle={{ margin: 15, padding: 15, alignSelf: 'flex-end' }}
          />
+         <Text style={{ color: '#10ac84', fontWeight: '800', margin: 10, alignSelf: 'flex-end' }}>
+           SIGN OUT
+         </Text>
          <Divider />
          <DrawerItems {...props} />
        </SafeAreaView>

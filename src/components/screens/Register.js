@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Card, Button, FormLabel, FormInput, FormValidationMessage, Icon } from 'react-native-elements';
-import { Transition } from 'react-navigation-fluid-transitions';
+
 import { Label } from '../Label';
 
 export default ({ navigation }) => (
@@ -13,36 +13,34 @@ export default ({ navigation }) => (
       opacity={.5}
     />
     <View style={styles.container}>
-      <Transition appear="right" delay>
-        <Label onPress={() => navigation.navigate('Login')} routeName={navigation.state.routeName.toUpperCase()} style={styles.label} background="#fff" size={40} />
-      </Transition>
+      <Label onPress={() => navigation.navigate('Login')} routeName={navigation.state.routeName.toUpperCase()} style={styles.label} background="#fff" size={40} />
       <Card containerStyle={{ width: '75%', alignSelf: 'center', borderRadius: 3 }} style={styles.card} elevation={7}>
-        <FormLabel>Email</FormLabel>
-        <FormInput/>
-        {/* <FormValidationMessage>Error message</FormValidationMessage> */}
-        <FormLabel>Password</FormLabel>
-        <FormInput secureTextEntry />
-        {/* <FormValidationMessage>Error message</FormValidationMessage> */}
-        <FormLabel>Confirm Password</FormLabel>
-        <FormInput secureTextEntry />
-        {/* <FormValidationMessage>Error message</FormValidationMessage> */}
-        <Button
-          buttonStyle={{ marginTop: 20 }}
-          backgroundColor="transparent"
-          textStyle={{ color: "#10ac84", fontWeight: '600' }}
-          title="CREATE ACCOUNT"
-          // onPress={() => {
-          //   onLogin()
-          //   .then(() => navigation.navigate('Home'));
-          // }}
-        />
-        <Button
-          buttonStyle={{ marginTop: 20 }}
-          backgroundColor="transparent"
-          textStyle={styles.text}
-          title="Already have an account? Login!"
-          onPress={() => navigation.navigate("Login")}
-        />
+      <FormLabel>Email</FormLabel>
+      <FormInput/>
+      {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+      <FormLabel>Password</FormLabel>
+      <FormInput secureTextEntry />
+      {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+      <FormLabel>Confirm Password</FormLabel>
+      <FormInput secureTextEntry />
+      {/* <FormValidationMessage>Error message</FormValidationMessage> */}
+      <Button
+        buttonStyle={{ marginTop: 20 }}
+        backgroundColor="transparent"
+        textStyle={{ color: "#10ac84", fontWeight: '600' }}
+        title="CREATE ACCOUNT"
+        // onPress={() => {
+        //   onLogin()
+        //   .then(() => navigation.navigate('Home'));
+        // }}
+      />
+      <Button
+        buttonStyle={{ marginTop: 20 }}
+        backgroundColor="transparent"
+        textStyle={styles.text}
+        title="Already have an account? Login!"
+        onPress={() => navigation.navigate("Login")}
+      />
       </Card>
     </View>
   </React.Fragment>
@@ -83,6 +81,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     alignSelf: 'flex-end',
-    padding: 66
+    padding: 0
   }
 });
