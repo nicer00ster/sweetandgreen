@@ -2,22 +2,24 @@ import React from 'react';
 import { ActivityIndicator } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider, connect } from 'react-redux';
-import axios from 'axios';
-import axiosMiddleware from 'redux-axios-middleware';
+// import axios from 'axios';
+// import axiosMiddleware from 'redux-axios-middleware';
 
 
 import { isLoggedIn } from './auth';
 import { rootNav } from './Router';
-import reducer from './reducers';
 
+import configureStore from './store/configureStore';
 console.disableYellowBox = true;
 
-const client = axios.create({
-  baseURL: 'https://order.sweetgreen.com',
-  responseType: 'json'
-});
+// const client = axios.create({
+//   baseURL: 'https://order.sweetgreen.com',
+//   responseType: 'json'
+// });
 
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+// const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+
+const store = configureStore();
 
 export default class App extends React.Component {
   constructor(props) {
