@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux';
 import { fetchMenu } from '../../actions';
 
-import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
+// import { Transition, FluidNavigator } from 'react-navigation-fluid-transitions';
 import Layout from '../Layout';
 
 class Menu extends React.Component {
@@ -28,16 +28,10 @@ class Menu extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    menu: state.menuReducer.menu
-  }
-}
+const mapStateToProps = state => ({
+  menu: state.menu.menu
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    fetchMenu: () => dispatch(fetchMenu())
-  }
-}
+const mapDispatchToProps = { fetchMenu }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

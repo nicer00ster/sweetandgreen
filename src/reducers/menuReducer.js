@@ -17,14 +17,14 @@ export default function menuReducer (state = initialState, action) {
     case FETCH_MENU_SUCCESS:
       return {
         ...state,
-        isFetching: false,
-        menu: action.data.products
+        menu: action.data.products,
+        isFetching: false
       }
     case FETCH_MENU_FAILURE:
       return {
         ...state,
-        isFetching: false,
-        error: true
+        error: true,
+        isFetching: false
       }
     default:
       return state;
